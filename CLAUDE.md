@@ -39,10 +39,12 @@ There is no build system, test suite, or linting configuration. This repo contai
 
 ## Conventions
 
-- The README uses GitHub-flavored Markdown with shield.io badge syntax for visual skill tags.
-- Badge format: `![Label](https://img.shields.io/badge/-Label-HexColor?logo=name&logoColor=white&style=flat-square)`
-- Links use standard Markdown link syntax with optional badge images.
-- Skills are grouped under `**Frontend**`, `**Backend**`, and `**Tools**` subheadings.
+- The README uses GitHub-flavored Markdown with HTML for centered layout and tables.
+- Social links use `for-the-badge` style shields.io badges wrapped in anchor tags.
+- Skill badges use `flat-square` style and are organized in an HTML table with three rows: Frontend, Backend, DevOps & Tools.
+- Badge format: `<img src="https://img.shields.io/badge/-Label-HexColor?logo=name&logoColor=white&style=flat-square" alt="Label" />`
+- GitHub stats are rendered via `github-readme-stats.vercel.app` and `github-readme-streak-stats.herokuapp.com`.
+- Profile view counter uses `komarev.com/ghpvc`.
 
 ## Git Workflow
 

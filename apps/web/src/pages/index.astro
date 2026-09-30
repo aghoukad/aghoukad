@@ -1,0 +1,9 @@
+---
+import MainLayout from "@/layouts/main.astro"
+import { Portfolio } from "@/components/portfolio"
+import "@/styles/portfolio.css"
+---
+
+<MainLayout>
+  <Portfolio client:load />
+</MainLayout>

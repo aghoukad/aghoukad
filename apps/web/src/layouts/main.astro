@@ -1,0 +1,34 @@
+---
+import "@workspace/ui/globals.css"
+---
+
+<!doctype html>
+<html lang="en" dir="ltr" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="SAIF-EDDINE AGHOUKAD — building thoughtful things for the web. Software, interfaces, and experiments with an emphasis on clarity and performance."
+    />
+    <meta name="theme-color" content="#0b0b0d" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>aghoukad. — SAIF-EDDINE AGHOUKAD</title>
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem("aghoukad-theme")
+        document.documentElement.classList.toggle("dark", theme !== "light")
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === "light" ? "#f7f7f9" : "#0b0b0d"
+      } catch {
+        // The default dark theme also works when storage is unavailable.
+      }
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

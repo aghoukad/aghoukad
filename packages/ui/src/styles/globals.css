@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:is(.dark *));
+@source "../../../../apps/**/*.{ts,tsx,astro}";
+@source "../**/*.{ts,tsx}";
+
+@theme inline {
+  --font-sans: "Geist Variable", sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono: "JetBrains Mono Variable", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 2);
+  --radius-xl: calc(var(--radius) * 3);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f7f7f9;
+  --foreground: #131315;
+  --card: #fff;
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: #4457b3;
+  --primary-foreground: #fff;
+  --secondary: #e6e6ec;
+  --secondary-foreground: #454652;
+  --muted: #f2f2f5;
+  --muted-foreground: #5a5b66;
+  --accent: #dee1ff;
+  --accent-foreground: #001159;
+  --destructive: #ba1a1a;
+  --border: #e4e4ed;
+  --input: var(--border);
+  --ring: var(--primary);
+  --label: #686975;
+  --hover-surface: #f2f2f5;
+  --inset-surface: #fff;
+  --radius: 0.25rem;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #0b0b0d;
+  --foreground: #eee;
+  --card: #111114;
+  --primary: #8c9eff;
+  --primary-foreground: #0c2482;
+  --secondary: #1c1c20;
+  --secondary-foreground: #b0b1bd;
+  --muted: #161619;
+  --muted-foreground: #a8a9b4;
+  --accent: #1b308c;
+  --accent-foreground: #dee1ff;
+  --destructive: #ffb4ab;
+  --border: #1f1f24;
+  --label: #8b8b96;
+  --hover-surface: #161619;
+  --inset-surface: #111114;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background font-sans text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}

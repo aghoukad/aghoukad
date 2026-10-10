@@ -253,9 +253,6 @@ button:focus-visible {
 .project-trigger:hover {
   text-decoration: none;
 }
-.project-trigger [data-slot="accordion-trigger-icon"] {
-  display: none;
-}
 .project-heading {
   display: flex;
   align-items: baseline;

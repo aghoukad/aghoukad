@@ -226,7 +226,7 @@ export function Portfolio() {
 
         <section
           id="work"
-          className="portfolio-section work-section reveal"
+          className="portfolio-section reveal"
           aria-label="Selected work"
         >
           <SectionHeading
@@ -309,7 +309,7 @@ export function Portfolio() {
 
         <section
           id="about"
-          className="portfolio-section about-section reveal"
+          className="portfolio-section reveal"
           aria-label="About"
         >
           <SectionHeading number="02" title="About" mobileNote="Dossier" />
@@ -362,7 +362,7 @@ export function Portfolio() {
 
         <section
           id="contact"
-          className="portfolio-section contact-section reveal"
+          className="portfolio-section reveal"
           aria-label="Contact"
         >
           <SectionHeading

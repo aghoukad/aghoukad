@@ -1,4 +1,30 @@
 {
   "$schema": "https://t3.codes/schema/t3.json",
-  "iconPath": "apps/web/public/favicon.svg"
+  "iconPath": "apps/web/public/favicon.svg",
+  "scripts": [
+    {
+      "name": "Setup",
+      "command": "bash scripts/run-pnpm.sh install --frozen-lockfile",
+      "icon": "configure",
+      "runOnWorktreeCreate": true,
+      "async": false
+    },
+    {
+      "name": "Develop",
+      "command": "bash scripts/run-pnpm.sh dev",
+      "icon": "play",
+      "previewUrl": "http://localhost:4321",
+      "autoOpenPreview": true
+    },
+    {
+      "name": "Check",
+      "command": "bash scripts/run-pnpm.sh lint && bash scripts/run-pnpm.sh typecheck",
+      "icon": "test"
+    },
+    {
+      "name": "Build",
+      "command": "bash scripts/run-pnpm.sh build",
+      "icon": "build"
+    }
+  ]
 }

@@ -84,13 +84,19 @@ button:focus-visible {
   display: flex;
   align-items: center;
 }
-.wordmark {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: -0.04em;
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-inline-start: -6px;
+  flex-shrink: 0;
 }
-.wordmark span {
-  color: var(--primary);
+.brand-logo img {
+  display: block;
+  width: 32px;
+  height: 32px;
 }
 .header-controls {
   gap: 24px;
@@ -586,15 +592,6 @@ button:focus-visible {
   .brand-group {
     gap: 12px;
     min-width: 0;
-  }
-  .wordmark {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    min-height: 44px;
-    margin-inline-start: -8px;
-    flex-shrink: 0;
   }
   .mobile-identity {
     display: flex;

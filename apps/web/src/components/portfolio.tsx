@@ -144,10 +144,10 @@ export function Portfolio() {
           <div className="brand-group">
             <a
               href="#top"
-              className="wordmark"
+              className="brand-logo"
               aria-label="aghoukad — back to top"
             >
-              a<span>.</span>
+              <img src="/favicon.svg" width={32} height={32} alt="" />
             </a>
             <div className="mobile-only mobile-identity">
               <span>SAIF-EDDINE AGHOUKAD</span>

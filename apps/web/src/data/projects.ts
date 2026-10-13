@@ -6,9 +6,9 @@ export const projects = [
     category: "Commerce platform",
     url: "https://ecart.ma",
     description:
-      "A commerce platform for Moroccan merchants to launch their own storefronts and manage cash-on-delivery orders. Brings products, order confirmation, team access, and Google Sheets integration together, with an Android app for managing the business on the go.",
+      "I built ecart.ma to help Moroccan merchants launch storefronts and manage cash-on-delivery orders. It brings product management, order confirmation, team access, and Google Sheets integration into one platform, with an Android app for managing stores on the go.",
     mobileDescription:
-      "Storefronts and cash-on-delivery order management for Moroccan merchants, with Google Sheets integration and an Android companion app.",
+      "I built ecart.ma for Moroccan merchants to launch storefronts and manage cash-on-delivery orders on the web and Android.",
     scope: "Full-stack & Mobile Development",
     stack: [
       "TypeScript",
@@ -26,9 +26,9 @@ export const projects = [
     category: "Shipping platform",
     url: "https://eship.ma",
     description:
-      "A shipping platform for Moroccan merchants to manage orders, pickup addresses, shipping fees, and shipments in one workspace. Includes a Speedaf carrier integration, shipment tracking, and cash-on-delivery reconciliation, with French and Arabic interfaces and role-based team access.",
+      "I built eship.ma for Moroccan merchants to manage orders, pickup addresses, shipping fees, and shipments. It includes a Speedaf carrier integration, tracking, and cash-on-delivery reconciliation, with French and Arabic interfaces and role-based team access.",
     mobileDescription:
-      "Orders, shipping fees, carrier tracking, and cash-on-delivery reconciliation for Moroccan merchants, with French and Arabic interfaces.",
+      "I built eship.ma for Moroccan merchants to manage shipping and cash-on-delivery reconciliation, with French and Arabic interfaces.",
     scope: "Full-stack Development",
     stack: [
       "TypeScript",

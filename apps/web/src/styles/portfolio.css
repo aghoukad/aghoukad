@@ -451,8 +451,10 @@ button:focus-visible {
 .contact-status {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   flex-shrink: 0;
+  min-height: 44px;
   padding: 8px 16px;
   border: 1px solid var(--border);
   border-radius: 2px;
@@ -461,9 +463,6 @@ button:focus-visible {
   line-height: 1.4;
   color: var(--secondary-foreground);
   background: var(--secondary);
-}
-.contact-status .status-dot {
-  opacity: 0.6;
 }
 .section-signoff {
   display: flex;

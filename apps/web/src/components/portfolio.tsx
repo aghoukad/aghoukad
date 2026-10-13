@@ -210,18 +210,14 @@ export function Portfolio() {
             className="hero-tagline hero-enter"
             style={{ animationDelay: "150ms" }}
           >
-            Building thoughtful things for the web.
+            Full-stack developer building web and mobile products.
           </p>
           <p
             className="hero-description hero-enter"
             style={{ animationDelay: "200ms" }}
           >
-            Focused on software, interfaces, and experiments
-            <span className="desktop-only">
-              {" "}
-              with an emphasis on clarity and performance
-            </span>
-            .
+            Commerce and shipping platforms, from storefronts and mobile apps to
+            APIs and databases.
           </p>
         </section>
 
@@ -314,48 +310,27 @@ export function Portfolio() {
           className="portfolio-section reveal"
           aria-label="About"
         >
-          <SectionHeading number="02" title="About" mobileNote="Dossier" />
+          <SectionHeading number="02" title="About" mobileNote="Profile" />
           <div className="about-grid">
             <Card className="about-copy">
               <p className="about-intro">
-                <span className="desktop-only">
-                  I build software with a focus on craft, user experience, and
-                  resilient systems. I&apos;m drawn to clean interfaces, fast
-                  software, and straightforward solutions to complicated design
-                  problems.
-                </span>
-                <span className="mobile-only">
-                  I am a software designer and engineer crafting software that
-                  values simplicity, performance, and longevity.
-                </span>
+                I&apos;m Saif-Eddine, a full-stack developer. I build commerce
+                and shipping tools for Moroccan merchants, including ecart.ma
+                and eship.ma.
               </p>
               <p>
-                <span className="desktop-only">
-                  Code quality and user clarity are deeply connected.
-                  Prioritizing deliberate structure and minimal conceptual
-                  overhead usually results in systems that feel effortless to
-                  operate and maintain.
-                </span>
-                <span className="mobile-only">
-                  My process is rooted in precision minimalism—reducing friction
-                  to let the underlying message and technical structure speak
-                  without decorative excess.
-                </span>
+                I work across the whole product, from storefronts and dashboards
+                to APIs, databases, and carrier integrations. I use TypeScript
+                and React for the web, and React Native with Expo for mobile.
               </p>
             </Card>
             <aside className="desk-section" aria-labelledby="desk-title">
-              <h3 id="desk-title">On my desk</h3>
+              <h3 id="desk-title">What I build</h3>
               <Card className="desk-card">
                 <ul>
-                  <li>Interfaces &amp; typography</li>
-                  <li>
-                    Developer tools
-                    <span className="desktop-only"> &amp; DX</span>
-                  </li>
-                  <li>
-                    Small web experiments
-                    <span className="desktop-only"> &amp; performance</span>
-                  </li>
+                  <li>Commerce &amp; order tools</li>
+                  <li>Shipping integrations</li>
+                  <li>Web &amp; mobile apps</li>
                 </ul>
               </Card>
             </aside>
@@ -371,21 +346,16 @@ export function Portfolio() {
             number="03"
             title="Reach Out"
             mobileTitle="Contact"
-            mobileNote="Dispatch"
+            mobileNote="Say hello"
           />
           <Card className="contact-card">
             <div className="contact-copy">
-              <h3>Have something in mind?</h3>
-              <p className="desktop-only">
-                Open for conversation regarding technical architectures, systems
-                design, and collaboration.
-              </p>
-              <p className="mobile-only">Contact details coming soon</p>
+              <h3>Have a project in mind?</h3>
+              <p>Get in touch about a web app, mobile app, or integration.</p>
             </div>
-            <div className="contact-status desktop-only">
-              <span className="status-dot" />
-              Contact details coming soon
-            </div>
+            <a href="mailto:contact@aghoukad.com" className="contact-status">
+              contact@aghoukad.com
+            </a>
             <div className="mobile-only contact-signoff">
               <span>aghoukad.com</span>
               <span>

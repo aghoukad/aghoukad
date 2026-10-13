@@ -14,6 +14,7 @@ import { projects } from "@/data/projects"
 
 const sections = ["work", "about", "contact"] as const
 type Section = (typeof sections)[number]
+const projectCount = String(projects.length).padStart(2, "0")
 
 function toggleTheme() {
   const dark = document.documentElement.classList.toggle("dark")
@@ -232,8 +233,8 @@ export function Portfolio() {
           <SectionHeading
             number="01"
             title="Selected Work"
-            note="Index · 03 Entries"
-            mobileNote="Index [03]"
+            note={`Index · ${projectCount} Entries`}
+            mobileNote={`Index [${projectCount}]`}
           />
           <Accordion multiple className="project-list">
             {projects.map((project) => (
@@ -253,9 +254,8 @@ export function Portfolio() {
                     </span>
                   </span>
                   <span className="project-meta">
-                    <Badge variant="secondary" className="sample-badge">
-                      <span className="desktop-only">Sample project</span>
-                      <span className="mobile-only">Sample</span>
+                    <Badge variant="secondary" className="project-badge">
+                      Product
                     </Badge>
                     <HugeiconsIcon
                       icon={Add01Icon}
@@ -294,17 +294,19 @@ export function Portfolio() {
                       </dd>
                     </div>
                   </dl>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link"
+                    aria-label={`Visit ${project.title} (opens in a new tab)`}
+                  >
+                    Visit {project.title} <span aria-hidden="true">↗</span>
+                  </a>
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
-          <div className="archive-note desktop-only">
-            <p>
-              * Note: Above listings represent provisional exploratory projects
-              and technical demonstrations.
-            </p>
-            <span>archive/2026</span>
-          </div>
         </section>
 
         <section

@@ -1,38 +1,42 @@
 export const projects = [
   {
-    id: "alpha",
+    id: "ecart",
     number: "01",
-    title: "Project Alpha",
-    category: "Web application",
+    title: "ecart.ma",
+    category: "Commerce platform",
+    url: "https://ecart.ma",
     description:
-      "A high-throughput web application exploring reactive state patterns and low-latency interaction models. Designed to probe computational efficiency and micro-benchmark state isolation in modern browser environments.",
+      "A commerce platform for Moroccan merchants to launch their own storefronts and manage cash-on-delivery orders. Brings products, order confirmation, team access, and Google Sheets integration together, with an Android app for managing the business on the go.",
     mobileDescription:
-      "A collaborative workspace utility exploring real-time state synchronization, modular layout engines, and keyboard-first user ergonomics.",
-    scope: "Architecture, Frontend Engineering",
-    stack: ["TypeScript", "React", "Tailwind CSS"],
+      "Storefronts and cash-on-delivery order management for Moroccan merchants, with Google Sheets integration and an Android companion app.",
+    scope: "Full-stack & Mobile Development",
+    stack: [
+      "TypeScript",
+      "React",
+      "TanStack Start",
+      "Express",
+      "MongoDB",
+      "Expo",
+    ],
   },
   {
-    id: "beta",
+    id: "eship",
     number: "02",
-    title: "Project Beta",
-    category: "Developer tool",
+    title: "eship.ma",
+    category: "Shipping platform",
+    url: "https://eship.ma",
     description:
-      "A minimalist CLI utility for streamlining developer workflow across distributed codebases. Focuses on zero-config static analysis parsing, unified directory navigation, and binary footprint minimalism.",
+      "A shipping platform for Moroccan merchants to manage orders, pickup addresses, shipping fees, and shipments in one workspace. Includes a Speedaf carrier integration, shipment tracking, and cash-on-delivery reconciliation, with French and Arabic interfaces and role-based team access.",
     mobileDescription:
-      "A command-line interface toolchain built for high-throughput code validation, AST transformation, and zero-config asset bundling.",
-    scope: "CLI Architecture, Systems Tooling",
-    stack: ["Rust", "Shell", "Node.js"],
-  },
-  {
-    id: "gamma",
-    number: "03",
-    title: "Project Gamma",
-    category: "Interface experiment",
-    description:
-      "Canvas and typography experiment exploring editorial layout geometry and fluid sizing. Renders vector-derived mathematical curves coupled directly to text baseline metrics in hardware-accelerated viewports.",
-    mobileDescription:
-      "Interactive canvas playground testing generative grain fields, physics-driven typography reactions, and variable font coordinate mapping.",
-    scope: "Interaction Design, Creative Coding",
-    stack: ["Canvas API", "Vanilla JS", "CSS Subgrid"],
+      "Orders, shipping fees, carrier tracking, and cash-on-delivery reconciliation for Moroccan merchants, with French and Arabic interfaces.",
+    scope: "Full-stack Development",
+    stack: [
+      "TypeScript",
+      "React",
+      "TanStack Start",
+      "Convex",
+      "Better Auth",
+      "Tailwind CSS",
+    ],
   },
 ] as const

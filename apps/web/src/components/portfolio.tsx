@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { Add01Icon, Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@workspace/ui/components/accordion"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { Card } from "@workspace/ui/components/card"
 import { projects } from "@/data/projects"
+import { ProjectDisclosure } from "@/components/project-disclosure"
+import { sections, useActiveSection } from "@/lib/use-active-section"
 
-const sections = ["work", "about", "contact"] as const
-type Section = (typeof sections)[number]
 const projectCount = String(projects.length).padStart(2, "0")
 
 function toggleTheme() {
   const dark = document.documentElement.classList.toggle("dark")
-  document
-    .querySelector('meta[name="theme-color"]')
-    ?.setAttribute("content", dark ? "#0b0b0d" : "#f7f7f9")
   try {
     localStorage.setItem("aghoukad-theme", dark ? "dark" : "light")
   } catch {
@@ -63,37 +54,9 @@ function SectionHeading({
 }
 
 export function Portfolio() {
-  const [activeSection, setActiveSection] = useState<Section>("work")
+  const { activeSection, selectSection } = useActiveSection()
 
   useEffect(() => {
-    let frame = 0
-    const updateSection = () => {
-      frame = 0
-      let current: Section = "work"
-      for (const section of sections) {
-        if (
-          (document.getElementById(section)?.getBoundingClientRect().top ??
-            Infinity) <= 160
-        ) {
-          current = section
-        }
-      }
-      if (
-        window.scrollY > 0 &&
-        window.innerHeight + window.scrollY >=
-          document.documentElement.scrollHeight - 8
-      ) {
-        current = "contact"
-      }
-      setActiveSection(current)
-    }
-    const scheduleUpdate = () => {
-      if (!frame) frame = requestAnimationFrame(updateSection)
-    }
-    updateSection()
-    window.addEventListener("scroll", scheduleUpdate, { passive: true })
-    window.addEventListener("resize", scheduleUpdate)
-
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -115,9 +78,6 @@ export function Portfolio() {
     }
 
     return () => {
-      cancelAnimationFrame(frame)
-      window.removeEventListener("scroll", scheduleUpdate)
-      window.removeEventListener("resize", scheduleUpdate)
       observer.disconnect()
     }
   }, [])
@@ -128,7 +88,7 @@ export function Portfolio() {
         key={section}
         href={`#${section}`}
         aria-current={activeSection === section ? "location" : undefined}
-        onClick={() => setActiveSection(section)}
+        onClick={() => selectSection(section)}
       >
         {section[0].toUpperCase() + section.slice(1)}
       </a>
@@ -232,77 +192,75 @@ export function Portfolio() {
             note={`Index · ${projectCount} Entries`}
             mobileNote={`Index [${projectCount}]`}
           />
-          <Accordion multiple className="project-list">
+          <div className="project-list">
             {projects.map((project) => (
-              <AccordionItem
+              <ProjectDisclosure
                 key={project.id}
-                value={project.id}
-                className="project-item"
-              >
-                <AccordionTrigger className="project-trigger">
-                  <span className="project-heading">
-                    <span className="project-number">{project.number}</span>
-                    <span className="project-labels">
-                      <span className="project-title">{project.title}</span>
-                      <span className="project-category">
-                        {project.category}
+                heading={
+                  <>
+                    <span className="project-heading">
+                      <span className="project-number">{project.number}</span>
+                      <span className="project-labels">
+                        <span className="project-title">{project.title}</span>
+                        <span className="project-category">
+                          {project.category}
+                        </span>
                       </span>
                     </span>
-                  </span>
-                  <span className="project-meta">
-                    <Badge variant="secondary" className="project-badge">
-                      Product
-                    </Badge>
-                    <HugeiconsIcon
-                      icon={Add01Icon}
-                      className="project-plus"
-                      size={14}
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
-                  </span>
-                </AccordionTrigger>
-                <AccordionContent className="project-content">
-                  <p>
-                    <span className="desktop-only">{project.description}</span>
-                    <span className="mobile-only">
-                      {project.mobileDescription}
+                    <span className="project-meta">
+                      <Badge variant="secondary" className="project-badge">
+                        Product
+                      </Badge>
+                      <HugeiconsIcon
+                        icon={Add01Icon}
+                        className="project-plus"
+                        size={14}
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
                     </span>
-                  </p>
-                  <dl className="project-facts">
-                    <div className="project-scope">
-                      <dt>Scope</dt>
-                      <dd>{project.scope}</dd>
-                    </div>
-                    <div className="project-stack">
-                      <dt>
-                        Stack<span className="mobile-only">:</span>
-                      </dt>
-                      <dd>
-                        {project.stack.map((technology, index) => (
-                          <span key={technology} className="technology">
-                            {technology}
-                            {index < project.stack.length - 1 && (
-                              <span className="desktop-only">, </span>
-                            )}
-                          </span>
-                        ))}
-                      </dd>
-                    </div>
-                  </dl>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link"
-                    aria-label={`Visit ${project.title} (opens in a new tab)`}
-                  >
-                    Visit {project.title} <span aria-hidden="true">↗</span>
-                  </a>
-                </AccordionContent>
-              </AccordionItem>
+                  </>
+                }
+              >
+                <p>
+                  <span className="desktop-only">{project.description}</span>
+                  <span className="mobile-only">
+                    {project.mobileDescription}
+                  </span>
+                </p>
+                <dl className="project-facts">
+                  <div className="project-scope">
+                    <dt>Scope</dt>
+                    <dd>{project.scope}</dd>
+                  </div>
+                  <div className="project-stack">
+                    <dt>
+                      Stack<span className="mobile-only">:</span>
+                    </dt>
+                    <dd>
+                      {project.stack.map((technology, index) => (
+                        <span key={technology} className="technology">
+                          {technology}
+                          {index < project.stack.length - 1 && (
+                            <span className="desktop-only">, </span>
+                          )}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                </dl>
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                  aria-label={`Visit ${project.title} (opens in a new tab)`}
+                >
+                  Visit {project.title} <span aria-hidden="true">↗</span>
+                </a>
+              </ProjectDisclosure>
             ))}
-          </Accordion>
+          </div>
         </section>
 
         <section

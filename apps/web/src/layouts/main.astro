@@ -23,8 +23,6 @@ import "@workspace/ui/globals.css"
       try {
         const theme = localStorage.getItem("aghoukad-theme")
         document.documentElement.classList.toggle("dark", theme !== "light")
-        document.querySelector('meta[name="theme-color"]').content =
-          theme === "light" ? "#f7f7f9" : "#0b0b0d"
       } catch {
         // The default dark theme also works when storage is unavailable.
       }
@@ -32,5 +30,26 @@ import "@workspace/ui/globals.css"
   </head>
   <body>
     <slot />
+    <script is:inline>
+      // Run after the stylesheets so CSS is the source of truth for every palette.
+      ;(() => {
+        const root = document.documentElement
+        const themeColor = document.querySelector('meta[name="theme-color"]')
+        const syncThemeColor = () => {
+          themeColor?.setAttribute(
+            "content",
+            getComputedStyle(root).getPropertyValue("--background").trim()
+          )
+        }
+        new MutationObserver(syncThemeColor).observe(root, {
+          attributes: true,
+          attributeFilter: ["class"],
+        })
+        window
+          .matchMedia("(max-width: 767px)")
+          .addEventListener("change", syncThemeColor)
+        syncThemeColor()
+      })()
+    </script>
   </body>
 </html>

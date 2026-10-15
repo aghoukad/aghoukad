@@ -1,4 +1,5 @@
 html {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
   background: var(--background);
@@ -38,7 +39,8 @@ a:hover {
   color: var(--primary);
 }
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+summary:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 4px;
 }
@@ -234,6 +236,8 @@ button:focus-visible {
   white-space: nowrap;
 }
 .project-list {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 .project-item {
@@ -241,12 +245,10 @@ button:focus-visible {
   border-radius: 2px;
   background: var(--card);
 }
-.project-item:hover {
-  background: var(--hover-surface);
-}
 .project-trigger {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
   min-width: 0;
   min-height: 67px;
@@ -255,9 +257,13 @@ button:focus-visible {
   border-radius: 2px;
   font-weight: 400;
   line-height: 1.35;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  touch-action: manipulation;
 }
-.project-trigger:hover {
-  text-decoration: none;
+.project-trigger::-webkit-details-marker {
+  display: none;
 }
 .project-heading {
   display: flex;
@@ -284,9 +290,16 @@ button:focus-visible {
   letter-spacing: -0.015em;
   transition: color 180ms ease;
 }
-.project-trigger:hover .project-title,
-.project-trigger[aria-expanded="true"] .project-title {
+.project-item[open]:not([data-closing]) .project-title {
   color: var(--primary);
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-item:hover {
+    background: var(--hover-surface);
+  }
+  .project-trigger:hover .project-title {
+    color: var(--primary);
+  }
 }
 .project-category {
   color: var(--secondary-foreground);
@@ -316,10 +329,18 @@ button:focus-visible {
 }
 .project-plus {
   color: var(--label);
-  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 200ms var(--ease-out);
 }
-.project-trigger[aria-expanded="true"] .project-plus {
+.project-item[open]:not([data-closing]) .project-plus {
   transform: rotate(45deg);
+}
+.project-item[data-instant],
+.project-item[data-instant] .project-plus,
+.project-item[data-instant] .project-title {
+  transition: none;
+}
+.project-panel {
+  overflow: hidden;
 }
 .project-content {
   max-width: 680px;
@@ -327,6 +348,13 @@ button:focus-visible {
   color: var(--muted-foreground);
   font-size: 15px;
   line-height: 1.65;
+}
+.project-content > p {
+  margin-bottom: 16px;
+}
+.project-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .project-facts {
   display: grid;
